@@ -2,7 +2,7 @@
 
 namespace PocketApi
 {
-    class RequestTokenRequestBody
+    class ObtainRequestTokenBody
     {
         [JsonPropertyName("consumer_key")]
         public string ConsumerKey { get; set; }

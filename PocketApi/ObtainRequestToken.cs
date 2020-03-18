@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace PocketApi
 {
-    public class RequestTokenRequest
+    public class ObtainRequestToken
     {
-        private static Uri _pocketRequestTokenUri = new Uri($"https://getpocket.com/v3/oauth/request");
+        private static Uri _obtainRequestTokenUri = new Uri($"https://getpocket.com/v3/oauth/request");
 
         public static async Task<RequestToken> ExecuteAsync(Uri CallBackUri, string ConsumerKey)
         {
             string response = await ApiPost.ExecuteAsync(
-               _pocketRequestTokenUri,
-                new RequestTokenRequestBody()
+               _obtainRequestTokenUri,
+                new ObtainRequestTokenBody()
                 {
                     ConsumerKey = ConsumerKey,
                     RedirectUri = CallBackUri.ToString()
