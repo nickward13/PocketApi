@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PocketApi.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace PocketApi.UwpUnitTest
         {
             Uri callbackUri = WebAuthenticationBroker.GetCurrentApplicationCallbackUri();
             RequestToken requestToken = await ObtainRequestToken.ExecuteAsync(callbackUri, Secrets.PocketAPIConsumerKey);
-            Uri uri = PocketApi.ObtainAuthorizeRequestTokenRedirectUri.Execute(requestToken, callbackUri);
+            Uri uri = ObtainAuthorizeRequestTokenRedirectUri.Execute(requestToken, callbackUri);
 
             Assert.IsNotNull(uri);
             Assert.IsNotNull(uri.ToString());

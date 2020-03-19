@@ -119,8 +119,8 @@
     <SDKReference Include="TestPlatform.Universal, Version=$(UnitTestPlatformVersion)" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ObtainAuthorizeRequestTokenRedirectUriTest.cs" />
-    <Compile Include="ObtainRequestTokenTest.cs" />
+    <Compile Include="Auth\ObtainAuthorizeRequestTokenRedirectUriTest.cs" />
+    <Compile Include="Auth\ObtainRequestTokenTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Secrets.cs" />
     <Compile Include="UnitTestApp.xaml.cs">

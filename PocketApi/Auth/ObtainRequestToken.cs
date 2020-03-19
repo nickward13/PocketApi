@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace PocketApi
+namespace PocketApi.Auth
 {
     public class ObtainRequestToken
     {
