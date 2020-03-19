@@ -13,7 +13,6 @@ RequestToken requestToken = await ObtainRequestToken.ExecuteAsync(
 ```
 3. Redirect user to Pocket to continue authorization using the uri returned from PocketApi.Auth.ObtainAuthorizeRequestTokenRedirectUri.  For example, for a UWP app, you might call:
 ```
-
 Uri requestUri = ObtainAuthorizeRequestTokenRedirectUri.Execute(requestToken, callbackUri);
 WebAuthenticationResult result = await WebAuthenticationBroker.AuthenticateSilentlyAsync(requestUri);
 if (result.ResponseStatus != WebAuthenticationStatus.Success)
@@ -21,4 +20,9 @@ if (result.ResponseStatus != WebAuthenticationStatus.Success)
         WebAuthenticationOptions.None,
         requestUri);
 ```
-4. To be continued...
+4. Receive the callback from Pocket, which is handled by the WebAuthenticationBroker class in the code in step 3 above.
+5. Convert a request token into a Pocket access token via PocketApi.Auth.ObtainAccessToken, for example:
+```
+AccessToken token = ObtainAccessToken(requestToken, Secrets.PocketAPIConsumerKey);
+```
+6. You can now make authenticated calls to Pocket using this AccessToken

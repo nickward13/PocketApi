@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Security.Authentication.Web;
 
-namespace PocketApi.UwpUnitTest
+namespace PocketApi.UwpUnitTest.Auth
 {
     [TestClass]
     public class ObtainAuthorizeRequestTokenRedirectUriTest
