@@ -13,10 +13,11 @@ namespace PocketApi.UwpUnitTest
         [TestMethod]
         public async Task ExecuteTestAsync()
         {
-            string response = await GetPocketItems.ExecuteAsync(Secrets.PocketAPIConsumerKey,
+            List<PocketItem> pocketItems = await GetPocketItems.ExecuteAsync(Secrets.PocketAPIConsumerKey,
                 Secrets.AccessToken);
 
-            Assert.IsNotNull(response);
+            Assert.IsNotNull(pocketItems);
+            Assert.AreNotEqual(0, pocketItems.Count);
         }
     }
 }
