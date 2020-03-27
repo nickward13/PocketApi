@@ -22,25 +22,46 @@ namespace PocketApi
                     DetailType = "complete"
                 });
 
-            List<PocketItem> pocketItems = ConvertApiResponseToPocketItem(apiResponse);
+            List<PocketItem> pocketItems = ConvertJsonToPocketItems(apiResponse);
 
             return pocketItems;
         }
 
-        private static List<PocketItem> ConvertApiResponseToPocketItem(string apiResponse)
+        private static List<PocketItem> ConvertJsonToPocketItems(string json)
         {
             List<PocketItem> pocketItems = new List<PocketItem>();
 
-            JsonDocument jsonDocument = JsonDocument.Parse(apiResponse);
+            JsonDocument apiJsonDocument = JsonDocument.Parse(json);
             
-            foreach(var itemObject in jsonDocument.RootElement.GetProperty("list").EnumerateObject())
+            foreach(var itemObject in apiJsonDocument.RootElement.GetProperty("list").EnumerateObject())
             {
                 var itemJsonDocument = JsonDocument.Parse(itemObject.Value.ToString());
-
-                pocketItems.Add(JsonSerializer.Deserialize<PocketItem>(itemJsonDocument.RootElement.ToString()));
+                PocketItem pocketItem = JsonSerializer.Deserialize<PocketItem>(itemJsonDocument.RootElement.ToString());
+                
+                JsonElement authorsJsonElement;
+                if (itemJsonDocument.RootElement.TryGetProperty("authors", out authorsJsonElement))
+                    pocketItem.Authors = ConvertJsonToAuthors(itemJsonDocument.RootElement.GetProperty("authors"));
+                else
+                    pocketItem.Authors = new List<PocketAuthor>();
+                
+                pocketItems.Add(pocketItem);
             }
 
             return pocketItems;
+        }
+
+        private static List<PocketAuthor> ConvertJsonToAuthors(JsonElement json)
+        {
+            List<PocketAuthor> authors = new List<PocketAuthor>();
+            
+            foreach(var itemObject in json.EnumerateObject())
+            {
+                var itemJsonDocument = JsonDocument.Parse(itemObject.Value.ToString());
+                PocketAuthor author = JsonSerializer.Deserialize<PocketAuthor>(itemJsonDocument.RootElement.ToString());
+                authors.Add(author);
+            }
+
+            return authors;
         }
     }
 }

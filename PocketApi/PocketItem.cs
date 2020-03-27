@@ -73,8 +73,9 @@ namespace PocketApi
         [JsonPropertyName("top_image_url")]
         public string TopImageUrl { get; set; }
         
-        //[JsonPropertyName("authors")]
-        //public List<Author> Authors { get; set; }
+        [JsonIgnore]
+        [JsonPropertyName("authors")]
+        public List<PocketAuthor> Authors { get; set; }
         
         //public PocketImage image { get; set; }
 

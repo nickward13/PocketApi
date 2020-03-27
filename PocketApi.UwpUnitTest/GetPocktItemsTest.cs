@@ -18,6 +18,7 @@ namespace PocketApi.UwpUnitTest
 
             Assert.IsNotNull(pocketItems);
             Assert.AreNotEqual(0, pocketItems.Count);
+            Assert.AreNotEqual(0, pocketItems[0].Authors.Count);
         }
     }
 }
