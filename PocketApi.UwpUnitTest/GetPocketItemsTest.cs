@@ -22,6 +22,8 @@ namespace PocketApi.UwpUnitTest
             Assert.IsNotNull(pocketItems[0].Image);
             Assert.IsNotNull(pocketItems[0].Image.ItemId);
             Assert.AreNotEqual(0, pocketItems[0].Image.Source.Length);
+            Assert.IsNotNull(pocketItems[0].Images);
+            Assert.AreNotEqual(0, pocketItems[0].Images.Count);
         }
     }
 }

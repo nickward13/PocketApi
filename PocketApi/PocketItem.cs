@@ -79,7 +79,8 @@ namespace PocketApi
         [JsonPropertyName("image")]
         public PocketImage Image { get; set; }
 
-        //public List<PocketImage> images { get; set; }
+        [JsonIgnore]
+        public List<PocketImage> Images { get; set; }
 
         [JsonPropertyName("listen_duration_estimate")]
         public int ListenDurationEstimate { get; set; }

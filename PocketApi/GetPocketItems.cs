@@ -44,7 +44,13 @@ namespace PocketApi
                     pocketItem.Authors = ConvertJsonToAuthors(itemJsonDocument.RootElement.GetProperty("authors"));
                 else
                     pocketItem.Authors = new List<PocketAuthor>();
-                
+
+                JsonElement imagesJsonElement;
+                if (itemJsonDocument.RootElement.TryGetProperty("images", out imagesJsonElement))
+                    pocketItem.Images = ConvertJsonToImages(itemJsonDocument.RootElement.GetProperty("images"));
+                else
+                    pocketItem.Images = new List<PocketImage>();
+
                 pocketItems.Add(pocketItem);
             }
 
@@ -63,6 +69,20 @@ namespace PocketApi
             }
 
             return authors;
+        }
+
+        private static List<PocketImage> ConvertJsonToImages(JsonElement json)
+        {
+            List<PocketImage> images = new List<PocketImage>();
+
+            foreach(var itemObject in json.EnumerateObject())
+            {
+                var itemJsonDocument = JsonDocument.Parse(itemObject.Value.ToString());
+                PocketImage image = JsonSerializer.Deserialize<PocketImage>(itemJsonDocument.RootElement.ToString());
+                images.Add(image);
+            }
+
+            return images;
         }
     }
 }
