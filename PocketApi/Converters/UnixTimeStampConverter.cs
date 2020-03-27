@@ -11,7 +11,7 @@ namespace PocketApi.Converters
         public static double ToUnixtimestamp(DateTime dateTimeToConvert)
         {
             TimeSpan unixTimespan = dateTimeToConvert.Subtract(unixEpochDateTime);
-            return unixTimespan.TotalSeconds;
+            return Math.Round(unixTimespan.TotalSeconds);
         }
 
         public static DateTime ToDateTime(double unixTimestamp)
