@@ -36,6 +36,7 @@ namespace PocketApi
             foreach(var itemObject in apiJsonDocument.RootElement.GetProperty("list").EnumerateObject())
             {
                 var itemJsonDocument = JsonDocument.Parse(itemObject.Value.ToString());
+
                 PocketItem pocketItem = JsonSerializer.Deserialize<PocketItem>(itemJsonDocument.RootElement.ToString());
                 
                 JsonElement authorsJsonElement;

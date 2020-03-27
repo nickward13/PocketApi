@@ -74,10 +74,10 @@ namespace PocketApi
         public string TopImageUrl { get; set; }
         
         [JsonIgnore]
-        [JsonPropertyName("authors")]
         public List<PocketAuthor> Authors { get; set; }
         
-        //public PocketImage image { get; set; }
+        [JsonPropertyName("image")]
+        public PocketImage Image { get; set; }
 
         //public List<PocketImage> images { get; set; }
 

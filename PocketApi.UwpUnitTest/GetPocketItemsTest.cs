@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace PocketApi.UwpUnitTest
 {
     [TestClass]
-    public class GetPocktItemsTest
+    public class GetPocketItemsTest
     {
         [TestMethod]
         public async Task ExecuteTestAsync()
@@ -19,6 +19,9 @@ namespace PocketApi.UwpUnitTest
             Assert.IsNotNull(pocketItems);
             Assert.AreNotEqual(0, pocketItems.Count);
             Assert.AreNotEqual(0, pocketItems[0].Authors.Count);
+            Assert.IsNotNull(pocketItems[0].Image);
+            Assert.IsNotNull(pocketItems[0].Image.ItemId);
+            Assert.AreNotEqual(0, pocketItems[0].Image.Source.Length);
         }
     }
 }
