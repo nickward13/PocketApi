@@ -25,5 +25,17 @@ namespace PocketApi.UwpUnitTest
             Assert.IsNotNull(pocketItems[1].Images);
             Assert.AreNotEqual(0, pocketItems[1].Images.Count);
         }
+
+        [TestMethod]
+        public async Task ExecuteNoItemsTestAsync()
+        {
+            List<PocketItem> pocketItems = await GetPocketItems.ExecuteAsync(
+                Secrets.PocketAPIConsumerKey,
+                Secrets.AccessToken,
+                DateTime.Now.ToUniversalTime());
+
+            Assert.IsNotNull(pocketItems);
+            Assert.AreEqual(0, pocketItems.Count);
+        }
     }
 }
