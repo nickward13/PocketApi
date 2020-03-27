@@ -11,7 +11,7 @@
     <RepositoryUrl>https://github.com/nickward13/PocketApi</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Pocket, getpocket, getpocket.com</PackageTags>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>Added ability to retrieve, add and delete pocket items</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
