@@ -11,19 +11,28 @@ namespace PocketApi
     {
         private static Uri _getUri = new Uri($"https://getpocket.com/v3/get");
 
-        public static async Task<List<PocketItem>> ExecuteAsync(string consumerKey, AccessToken accessToken)
+        public static async Task<List<PocketItem>> ExecuteAsync(string consumerKey, AccessToken accessToken, DateTime lastSyncDateTime)
         {
+            double lastSyncUnixTimestamp = Converters.UnixTimestampConverter.ToUnixtimestamp(lastSyncDateTime);
+
             string apiResponse = await ApiPost.ExecuteAsync(
                 _getUri,
                 new GetPocketItemsBody()
                 {
                     ConsumerKey = consumerKey,
                     AccessToken = accessToken.Token,
-                    DetailType = "complete"
+                    DetailType = "complete",
+                    Since = lastSyncUnixTimestamp
                 });
 
             List<PocketItem> pocketItems = ConvertJsonToPocketItems(apiResponse);
 
+            return pocketItems;
+        }
+
+        public static async Task<List<PocketItem>> ExecuteAsync(string consumerKey, AccessToken accessToken)
+        {
+            List<PocketItem> pocketItems = await ExecuteAsync(consumerKey, accessToken, new DateTime(1970, 1, 1));
             return pocketItems;
         }
 
