@@ -17,13 +17,25 @@ namespace PocketApi
         public string DetailType { get; set; }
         [JsonPropertyName("since")]
         public double Since { get; set; }
+        [JsonIgnore]
+        public PocketItemState State { get; set; }
         [JsonPropertyName("state")]
-        public string StateString { 
+        public string StateString
+        {
             get
             {
-                return this.StateEnum.ToString().ToLower();
+                return this.State.ToString().ToLower();
             }
         }
-        public PocketItemState StateEnum { get; set; }
+        [JsonIgnore]
+        public PocketItemSort Sort { get; set; }
+        [JsonPropertyName("sort")]
+        public string SortString
+        {
+            get
+            {
+                return this.Sort.ToString().ToLower();
+            }
+        }
     }
 }

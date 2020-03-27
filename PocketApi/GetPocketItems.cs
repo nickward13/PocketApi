@@ -23,7 +23,8 @@ namespace PocketApi
                     AccessToken = accessToken.Token,
                     DetailType = "complete",
                     Since = lastSyncUnixTimestamp,
-                    StateEnum = PocketItemState.All
+                    State = PocketItemState.All,
+                    Sort = PocketItemSort.Oldest
                 });
 
             List<PocketItem> pocketItems = ConvertJsonToPocketItems(apiResponse);
