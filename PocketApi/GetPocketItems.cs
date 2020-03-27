@@ -22,7 +22,8 @@ namespace PocketApi
                     ConsumerKey = consumerKey,
                     AccessToken = accessToken.Token,
                     DetailType = "complete",
-                    Since = lastSyncUnixTimestamp
+                    Since = lastSyncUnixTimestamp,
+                    StateEnum = PocketItemState.All
                 });
 
             List<PocketItem> pocketItems = ConvertJsonToPocketItems(apiResponse);
