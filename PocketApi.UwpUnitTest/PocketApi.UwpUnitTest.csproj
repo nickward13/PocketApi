@@ -119,7 +119,7 @@
     <SDKReference Include="TestPlatform.Universal, Version=$(UnitTestPlatformVersion)" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddPocketItemTest.cs" />
+    <Compile Include="AddDeletePocketItemTest.cs" />
     <Compile Include="Auth\ObtainAuthorizeRequestTokenRedirectUriTest.cs" />
     <Compile Include="Auth\ObtainRequestTokenTest.cs" />
     <Compile Include="Converters\UnixTimestampConverterTest.cs" />

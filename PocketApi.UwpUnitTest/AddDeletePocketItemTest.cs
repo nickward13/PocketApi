@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace PocketApi.UwpUnitTest
 {
     [TestClass]
-    public class AddPocketItemTest
+    public class AddDeletePocketItemTest
     {
         [TestMethod]
         public async Task ExecuteTestAsync()
@@ -23,6 +23,13 @@ namespace PocketApi.UwpUnitTest
             Assert.IsNotNull(newPocketItem.Id);
             Assert.AreNotEqual(0, newPocketItem.Id.Length);
             Assert.AreNotEqual(0, newPocketItems.Count);
+
+            bool result = await DeletePocketItem.ExecuteAsync(
+                Secrets.PocketAPIConsumerKey,
+                Secrets.AccessToken,
+                newPocketItem);
+
+            Assert.AreEqual(true, result);
         }
     }
 }
