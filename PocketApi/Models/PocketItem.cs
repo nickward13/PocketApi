@@ -1,9 +1,10 @@
-﻿using System;
+﻿using PocketApi.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace PocketApi
+namespace PocketApi.Models
 {
     public class PocketItem
     {

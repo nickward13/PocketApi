@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PocketApi
+namespace PocketApi.Models
 {
     internal enum PocketItemState
     {

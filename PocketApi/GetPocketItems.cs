@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
+using PocketApi.Models;
+using PocketApi.RestApiRequestModels;
 
 namespace PocketApi
 {

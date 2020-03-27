@@ -1,6 +1,7 @@
-﻿using System.Text.Json.Serialization;
+﻿using PocketApi.Models;
+using System.Text.Json.Serialization;
 
-namespace PocketApi
+namespace PocketApi.RestApiRequestModels
 {
     internal class GetPocketItemsBody
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
-namespace PocketApi
+namespace PocketApi.Models
 {
     public class PocketImage
     {

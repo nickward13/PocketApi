@@ -1,4 +1,6 @@
 ﻿using PocketApi.Auth;
+using PocketApi.Models;
+using PocketApi.RestApiRequestModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace PocketApi
+namespace PocketApi.RestApiRequestModels
 {
     internal class AddPocketItemBody
     {
