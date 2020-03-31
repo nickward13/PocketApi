@@ -1,5 +1,4 @@
-﻿using PocketApi.Auth;
-using PocketApi.Models;
+﻿using PocketApi.Models;
 using PocketApi.RestApiRequestModels;
 using System;
 using System.Collections.Generic;
@@ -10,20 +9,20 @@ using System.Threading.Tasks;
 
 namespace PocketApi
 {
-    public class AddPocketItem
+    public partial class PocketClient
     {
         private static Uri _addUri = new Uri($"https://getpocket.com/v3/add");
 
-        public static async Task<PocketItem> ExecuteAsync(string consumerKey, AccessToken accessToken, Uri uri)
+        public async Task<PocketItem> AddPocketItemAsync(Uri uri)
         {
             PocketItem addedPocketItem = new PocketItem();
             
-            string apiResponse = await ApiPost.ExecuteAsync(
+            string apiResponse = await ApiPostAsync(
                 _addUri,
                 new AddPocketItemBody()
                 {
-                    ConsumerKey = consumerKey,
-                    AccessToken = accessToken.Token,
+                    ConsumerKey = _accessToken.ApiKey,
+                    AccessToken = _accessToken.Token,
                     Uri = uri
                 });
 

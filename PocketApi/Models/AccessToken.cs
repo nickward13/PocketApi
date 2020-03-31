@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace PocketApi.Auth
+namespace PocketApi.Models
 {
     public class AccessToken
     {
@@ -11,5 +11,7 @@ namespace PocketApi.Auth
         public string Token { get; set; }
         [JsonPropertyName("username")]
         public string Username { get; set; }
+        [JsonIgnore]
+        public string ApiKey { get; set; }
     }
 }

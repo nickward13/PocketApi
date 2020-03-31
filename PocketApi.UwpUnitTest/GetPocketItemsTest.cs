@@ -11,11 +11,12 @@ namespace PocketApi.UwpUnitTest
     [TestClass]
     public class GetPocketItemsTest
     {
+        PocketClient _pocketClient = new PocketClient(Secrets.AccessToken);
+
         [TestMethod]
         public async Task ExecuteTestAsync()
         {
-            List<PocketItem> pocketItems = await GetPocketItems.ExecuteAsync(Secrets.PocketAPIConsumerKey,
-                Secrets.AccessToken);
+            List<PocketItem> pocketItems = await _pocketClient.GetPocketItemsAsync();
 
             Assert.IsNotNull(pocketItems);
             Assert.AreNotEqual(0, pocketItems.Count);
@@ -30,9 +31,7 @@ namespace PocketApi.UwpUnitTest
         [TestMethod]
         public async Task ExecuteNoItemsTestAsync()
         {
-            List<PocketItem> pocketItems = await GetPocketItems.ExecuteAsync(
-                Secrets.PocketAPIConsumerKey,
-                Secrets.AccessToken,
+            List<PocketItem> pocketItems = await _pocketClient.GetPocketItemsAsync(
                 DateTime.Now.ToUniversalTime());
 
             Assert.IsNotNull(pocketItems);

@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PocketApi.Auth;
+using PocketApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +12,12 @@ namespace PocketApi.UwpUnitTest.Auth
     [TestClass]
     public class ObtainRequestTokenTest
     {
+        private PocketClient _pocketClient = new PocketClient();
+
         [TestMethod]
         public async Task ExecuteTest()
         {
-            RequestToken requestToken = await ObtainRequestToken.ExecuteAsync(
+            RequestToken requestToken = await _pocketClient.ObtainRequestTokenAsync(
                 WebAuthenticationBroker.GetCurrentApplicationCallbackUri(),
                 Secrets.PocketAPIConsumerKey);
 

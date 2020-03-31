@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace PocketApi.Auth
+namespace PocketApi.Models
 {
     public class RequestToken
     {

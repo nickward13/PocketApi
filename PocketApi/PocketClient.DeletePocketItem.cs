@@ -1,5 +1,4 @@
-﻿using PocketApi.Auth;
-using PocketApi.Models;
+﻿using PocketApi.Models;
 using PocketApi.RestApiRequestModels;
 using System;
 using System.Collections.Generic;
@@ -9,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace PocketApi
 {
-    public class DeletePocketItem
+    public partial class PocketClient
     {
         private static Uri _modifyUri = new Uri($"https://getpocket.com/v3/send");
 
-        public static async Task<bool> ExecuteAsync(string consumerKey, AccessToken accessToken, PocketItem deletePocketItem)
+        public async Task<bool> DeletePocketItemAsync(PocketItem deletePocketItem)
         {
-            string apiResponse = await ApiPost.ExecuteAsync(
+            string apiResponse = await ApiPostAsync(
                 _modifyUri,
                 new ModifyPocketItemBody()
                 {
-                    ConsumerKey = consumerKey,
-                    AccessToken = accessToken.Token,
+                    ConsumerKey = _accessToken.ApiKey,
+                    AccessToken = _accessToken.Token,
                     Actions = new PocketModifyAction[]
                     {
                         new PocketModifyAction()

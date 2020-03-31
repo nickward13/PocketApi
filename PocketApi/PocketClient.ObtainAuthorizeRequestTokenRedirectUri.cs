@@ -1,12 +1,13 @@
-﻿using System;
+﻿using PocketApi.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace PocketApi.Auth
+namespace PocketApi
 {
-    public class ObtainAuthorizeRequestTokenRedirectUri
+    public partial class PocketClient
     {
-        public static Uri Execute(RequestToken RequestToken, Uri RedirectUri)
+        public Uri ObtainAuthorizeRequestTokenRedirectUri(RequestToken RequestToken, Uri RedirectUri)
         {
             Uri uri = new Uri($"https://getpocket.com/auth/authorize?request_token={RequestToken.Code}&redirect_uri={RedirectUri.ToString()}");
             return uri;

@@ -1,28 +1,28 @@
-﻿using PocketApi.Auth;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
 using PocketApi.Models;
 using PocketApi.RestApiRequestModels;
+using System.Runtime.CompilerServices;
 
 namespace PocketApi
 {
-    public class GetPocketItems
+    public partial class PocketClient
     {
         private static Uri _getUri = new Uri($"https://getpocket.com/v3/get");
 
-        public static async Task<List<PocketItem>> ExecuteAsync(string consumerKey, AccessToken accessToken, DateTime lastSyncDateTime)
+        public async Task<List<PocketItem>> GetPocketItemsAsync(DateTime lastSyncDateTime)
         {
             double lastSyncUnixTimestamp = Converters.UnixTimestampConverter.ToUnixtimestamp(lastSyncDateTime);
 
-            string apiResponse = await ApiPost.ExecuteAsync(
+            string apiResponse = await ApiPostAsync(
                 _getUri,
                 new GetPocketItemsBody()
                 {
-                    ConsumerKey = consumerKey,
-                    AccessToken = accessToken.Token,
+                    ConsumerKey = this._accessToken.ApiKey,
+                    AccessToken = this._accessToken.Token,
                     DetailType = "complete",
                     Since = lastSyncUnixTimestamp,
                     State = PocketItemState.All,
@@ -34,13 +34,13 @@ namespace PocketApi
             return pocketItems;
         }
 
-        public static async Task<List<PocketItem>> ExecuteAsync(string consumerKey, AccessToken accessToken)
+        public async Task<List<PocketItem>> GetPocketItemsAsync()
         {
-            List<PocketItem> pocketItems = await ExecuteAsync(consumerKey, accessToken, new DateTime(1970, 1, 1));
+            List<PocketItem> pocketItems = await this.GetPocketItemsAsync(new DateTime(1970, 1, 1));
             return pocketItems;
         }
 
-        private static List<PocketItem> ConvertJsonToPocketItems(string json)
+        private List<PocketItem> ConvertJsonToPocketItems(string json)
         {
             List<PocketItem> pocketItems = new List<PocketItem>();
 
