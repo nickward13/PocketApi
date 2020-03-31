@@ -13,13 +13,13 @@ namespace PocketApi
     {
         private static Uri _obtainRequestTokenUri = new Uri($"https://getpocket.com/v3/oauth/request");
 
-        public async Task<RequestToken> ObtainRequestTokenAsync(Uri CallBackUri, string ConsumerKey)
+        public async Task<RequestToken> ObtainRequestTokenAsync(Uri CallBackUri)
         {
             string response = await ApiPostAsync(
                _obtainRequestTokenUri,
                 new ObtainRequestTokenBody()
                 {
-                    ConsumerKey = ConsumerKey,
+                    ConsumerKey = _consumerKey,
                     RedirectUri = CallBackUri.ToString()
                 }
             );

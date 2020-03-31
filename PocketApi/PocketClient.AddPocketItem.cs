@@ -21,7 +21,7 @@ namespace PocketApi
                 _addUri,
                 new AddPocketItemBody()
                 {
-                    ConsumerKey = _accessToken.ApiKey,
+                    ConsumerKey = _accessToken.ConsumerKey,
                     AccessToken = _accessToken.Token,
                     Uri = uri
                 });

@@ -21,7 +21,7 @@ namespace PocketApi
                 _getUri,
                 new GetPocketItemsBody()
                 {
-                    ConsumerKey = this._accessToken.ApiKey,
+                    ConsumerKey = this._accessToken.ConsumerKey,
                     AccessToken = this._accessToken.Token,
                     DetailType = "complete",
                     Since = lastSyncUnixTimestamp,

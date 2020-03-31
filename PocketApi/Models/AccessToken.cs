@@ -12,6 +12,6 @@ namespace PocketApi.Models
         [JsonPropertyName("username")]
         public string Username { get; set; }
         [JsonIgnore]
-        public string ApiKey { get; set; }
+        public string ConsumerKey { get; set; }
     }
 }

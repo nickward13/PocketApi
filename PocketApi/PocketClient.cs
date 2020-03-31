@@ -8,15 +8,17 @@ namespace PocketApi
     public partial class PocketClient
     {
         private AccessToken _accessToken;
+        private string _consumerKey;
 
         public PocketClient(AccessToken accessToken)
-            : this()
+            : this(accessToken.ConsumerKey)
         {
             _accessToken = accessToken;
         }
 
-        public PocketClient()
+        public PocketClient(string consumerKey)
         {
+            _consumerKey = consumerKey;
             this.InitializeHttpClient();
         }
 

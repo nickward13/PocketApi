@@ -12,13 +12,13 @@ namespace PocketApi.UwpUnitTest.Auth
     [TestClass]
     public class ObtainAuthorizeRequestTokenRedirectUriTest
     {
-        private PocketClient _pocketClient = new PocketClient();
+        private PocketClient _pocketClient = new PocketClient(Secrets.PocketAPIConsumerKey);
 
         [TestMethod]
         public async Task ExecuteTestAsync()
         {
             Uri callbackUri = WebAuthenticationBroker.GetCurrentApplicationCallbackUri();
-            RequestToken requestToken = await _pocketClient.ObtainRequestTokenAsync(callbackUri, Secrets.PocketAPIConsumerKey);
+            RequestToken requestToken = await _pocketClient.ObtainRequestTokenAsync(callbackUri);
             Uri uri = _pocketClient.ObtainAuthorizeRequestTokenRedirectUri(requestToken, callbackUri);
 
             Assert.IsNotNull(uri);

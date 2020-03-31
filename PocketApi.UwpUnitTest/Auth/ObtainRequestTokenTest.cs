@@ -12,14 +12,13 @@ namespace PocketApi.UwpUnitTest.Auth
     [TestClass]
     public class ObtainRequestTokenTest
     {
-        private PocketClient _pocketClient = new PocketClient();
+        private PocketClient _pocketClient = new PocketClient(Secrets.PocketAPIConsumerKey);
 
         [TestMethod]
         public async Task ExecuteTest()
         {
             RequestToken requestToken = await _pocketClient.ObtainRequestTokenAsync(
-                WebAuthenticationBroker.GetCurrentApplicationCallbackUri(),
-                Secrets.PocketAPIConsumerKey);
+                WebAuthenticationBroker.GetCurrentApplicationCallbackUri());
 
             Assert.IsNotNull(requestToken);
             Assert.IsNotNull(requestToken.Code);

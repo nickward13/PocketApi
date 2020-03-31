@@ -18,7 +18,7 @@ namespace PocketApi
                 _modifyUri,
                 new ModifyPocketItemBody()
                 {
-                    ConsumerKey = _accessToken.ApiKey,
+                    ConsumerKey = _accessToken.ConsumerKey,
                     AccessToken = _accessToken.Token,
                     Actions = new PocketModifyAction[]
                     {
