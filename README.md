@@ -24,6 +24,6 @@ if (result.ResponseStatus != WebAuthenticationStatus.Success)
 4. Receive the callback from Pocket, which is handled by the WebAuthenticationBroker class in the code in step 3 above.
 5. Convert a request token into a Pocket access token via ObtainAccessTokenAsync, for example:
 ```
-AccessToken token = await ObtainAccessTokenAsync(requestToken, Secrets.PocketAPIConsumerKey);
+AccessToken token = await _pocketClient.ObtainAccessTokenAsync(requestToken, Secrets.PocketAPIConsumerKey);
 ```
 6. You can now make authenticated calls to Pocket using this AccessToken (which is stored in the PocketClient object).
