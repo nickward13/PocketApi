@@ -10,12 +10,15 @@ namespace PocketApi
         private AccessToken _accessToken;
 
         public PocketClient(AccessToken accessToken)
+            : this()
         {
             _accessToken = accessToken;
         }
 
         public PocketClient()
-        { }
+        {
+            this.InitializeHttpClient();
+        }
 
     }
 }

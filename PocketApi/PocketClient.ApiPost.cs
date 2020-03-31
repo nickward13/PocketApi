@@ -13,15 +13,17 @@ namespace PocketApi
     {
         private HttpClient _httpClient = new HttpClient();
 
-        internal async Task<string> ApiPostAsync(Uri requestUri, object body)
+        private void InitializeHttpClient()
         {
-            if(!_httpClient.DefaultRequestHeaders.Contains("X-Accept"))
-                _httpClient.DefaultRequestHeaders.Add("X-Accept", "application/json");
-            
+            _httpClient.DefaultRequestHeaders.Add("X-Accept", "application/json");
+        }
+
+        private async Task<string> ApiPostAsync(Uri requestUri, object body)
+        {
             string jsonBody = JsonSerializer.Serialize(body);
             StringContent content = new StringContent(
                 jsonBody,
-                UTF8Encoding.UTF8,
+                Encoding.UTF8,
                 "application/json");
             HttpResponseMessage response = await _httpClient.PostAsync(requestUri, content);
             response.EnsureSuccessStatusCode();
