@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Nickward13.PocketApi</PackageId>
-    <Version>0.2.1</Version>
+    <Version>0.2.2</Version>
     <Authors>Nick Ward</Authors>
     <Company />
     <Description>An API wrapper for Pocket's API (https://getpocket.com/developer/docs/overview)</Description>
