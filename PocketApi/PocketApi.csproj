@@ -11,7 +11,7 @@
     <RepositoryUrl>https://github.com/nickward13/PocketApi</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Pocket, getpocket, getpocket.com</PackageTags>
-    <PackageReleaseNotes>Ensure AccessToken can be serialized and deserialized fully to json</PackageReleaseNotes>
+    <PackageReleaseNotes>Ensure PocketItem can be serialized and deserialized fully to json</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

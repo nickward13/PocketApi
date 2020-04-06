@@ -74,13 +74,13 @@ namespace PocketApi.Models
         [JsonPropertyName("top_image_url")]
         public string TopImageUrl { get; set; }
         
-        [JsonIgnore]
+        [JsonPropertyName("author_array")]
         public List<PocketAuthor> Authors { get; set; }
         
         [JsonPropertyName("image")]
         public PocketImage Image { get; set; }
 
-        [JsonIgnore]
+        [JsonPropertyName("image_array")]
         public List<PocketImage> Images { get; set; }
 
         [JsonPropertyName("listen_duration_estimate")]
